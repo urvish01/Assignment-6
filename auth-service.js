@@ -27,6 +27,7 @@ userSchema.plugin(uniqueValidator);
 
 const dbURI = "mongodb+srv://root:Password@cluster0.2aa73uk.mongodb.net/?retryWrites=true&w=majority"
 let User;
+
 module.exports.initialize = function () {
     return new Promise(function (resolve, reject) {
         let db = mongoose.createConnection(dbURI, {
@@ -63,7 +64,7 @@ module.exports.addUser = async (userName, hashedPassword, email) => {
 module.exports.findUser =  async (userName) => {
     try {
         const user = await User.findOne({ userName }); // Use the findOne method to find a 
-        return user; // Return the user if found, or null if not found
+        return user; 
     } catch (error) {
         throw error; // If there's an error, rethrow it to handle it in the calling function
     }

@@ -1,6 +1,6 @@
 /********************************************************************************* 
 
-WEB322 – Assignment 03
+WEB322 – Assignment 06
 I declare that this assignment is my own work in accordance with Seneca
 Academic Policy.  No part of this assignment has been copied manually or 
 electronically from any other source (including 3rd party web sites) or 
@@ -405,11 +405,10 @@ app.get("/userHistory",ensureLogin, async(req, res) => {
   try{
     const userName = req.session.user.userName;
     const data = await authData.findUser(userName);
- 
+     
     if(!data){
       res.render("userHistory", { message: "no results" });
     }
-    console.log(data.loginHistory)  
 
     res.render("userHistory", { userHistory: data.loginHistory });
   } catch (err){
